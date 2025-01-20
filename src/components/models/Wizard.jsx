@@ -9,10 +9,9 @@ export default function WizardModel(props) {
 
   const modelRef = useRef();
 
-  useFrame((state, delta, xrFrame) => {
+  useFrame((state) => {
     modelRef.current.position.y = -1.5 + Math.sin(state.clock.elapsedTime) * 0.15;
-
-  })
+  });
 
   return (
     <group 
