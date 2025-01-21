@@ -10,7 +10,7 @@ export default function StaffModel(props) {
 
   useFrame(() => {
     ref.current.rotation.y += 0.007;
-  })
+  });
 
   return (
     <group
