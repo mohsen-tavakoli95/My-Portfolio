@@ -34,7 +34,7 @@ const AboutDetails = () => {
             className='w-full h-auto' 
             alt="Mohsen Tavakoli"
             loading='lazy'
-            src="https://github-readme-stats.vercel.app/api/top-langs?username=mohsen-tavakoli95&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
+            src="https://my-readme-stats-git-main-mohsen-tavakoli95s-projects.vercel.app/api/top-langs?username=mohsen-tavakoli95&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
           />
         </ItemLayout>
         <ItemLayout className="col-span-8 !p-0">
@@ -42,7 +42,7 @@ const AboutDetails = () => {
             className='w-full h-auto' 
             alt="Mohsen Tavakoli"
             loading='lazy'
-            src="https://github-readme-stats.vercel.app/api?username=mohsen-tavakoli95&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
+            src="https://my-readme-stats-git-main-mohsen-tavakoli95s-projects.vercel.app/api?username=mohsen-tavakoli95&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
           />
         </ItemLayout>
         <ItemLayout className="col-span-full">
