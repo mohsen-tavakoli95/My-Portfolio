@@ -15,8 +15,8 @@ export default function Model(props) {
   return (
     <group
       {...props} 
-      position={[0, 0.25, 0]}
-      scale={[1.6, 1.6, 1.6]}
+      position={[0, 0.3, 0]}
+      scale={[1.4, 1.4, 1.4]}
       rotation={[0.4, -1, 0]}
       dispose={null}
       ref={ref}
