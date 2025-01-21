@@ -2,6 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 //icons
 import { Github, Home, Linkedin, NotebookText, Palette, Phone, Twitter, User } from 'lucide-react';
+//components 
+import { WraperLayout } from '@/components';
+//clsx
+import clsx from 'clsx';
 
 const renderIcon = (icon) => {
   switch (icon) {
@@ -38,36 +42,81 @@ const renderIcon = (icon) => {
 }
 
 const NavigationButton = (props) => {
-  const { x, y, link, icon, newTab, label } = props;
+  const { x, y, link, icon, newTab, label, isLeftDirection = false } = props;
 
-  return (
-    <div 
-      className='absolute cursor-pointer z-50'
-      style={{
-        transform: `translate(${x}, ${y})`
-      }}
-    >
-      <Link 
-        href={link} 
-        target={newTab ? "_blank" : "_self"} 
-        className='text-foreground rounded-full flex items-center justify-center custom-bg' 
-        aria-label={label}
-        
-      >
-        <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
-          {renderIcon(icon)}
+  const renderView = () => {
+    return (
+      <WraperLayout>
+        {({ isSmallScreen }) => {
+          if (isSmallScreen)
+            return renderSmallView();
 
-          <span className='peer bg-transparent absolute top-0 left-0 w-full h-full' />
-          <span 
-            className='absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 
-              bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap'
-          >
-            {label}
+          return renderDefaultView();
+        }}
+      </WraperLayout>
+    );
+  }
+
+  const renderSmallView = () => {
+    return (
+      <div className='w-fit cursor-pointer z-50'>
+        <Link 
+          href={link} 
+          target={newTab ? "_blank" : "_self"} 
+          className='text-foreground rounded-full flex items-center justify-center custom-bg' 
+          aria-label={label}
+        >
+          <span className='relative w-12 h-12 xs:w-14 xs:h-14 p-4 hover:text-accent'>
+            {renderIcon(icon)}
+  
+            <span className='peer bg-transparent absolute top-0 left-0 w-full h-full' />
+            <span 
+              
+
+                className={clsx(
+                            'absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap',
+                            isLeftDirection ? "right-full left-auto" : ""
+                )}
+            >
+              {label}
+            </span>
           </span>
-        </span>
-      </Link>
-    </div>
-  );
+        </Link>
+      </div>
+    );
+  }
+  
+    const renderDefaultView = () => {
+      return (
+        <div 
+          className='absolute cursor-pointer z-50'
+          style={{
+            transform: `translate(${x}, ${y})`
+          }}
+        >
+          <Link 
+            href={link} 
+            target={newTab ? "_blank" : "_self"} 
+            className='text-foreground rounded-full flex items-center justify-center custom-bg' 
+            aria-label={label}
+          >
+            <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
+              {renderIcon(icon)}
+    
+              <span className='peer bg-transparent absolute top-0 left-0 w-full h-full' />
+              <span 
+                className='absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 
+                  bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap'
+              >
+                {label}
+              </span>
+            </span>
+          </Link>
+        </div>
+      );
+    }
+
+  return renderView();
 }
 
 export default NavigationButton;

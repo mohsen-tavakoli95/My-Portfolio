@@ -1,16 +1,44 @@
 "use client";
 
 import React, { useRef } from 'react';
+//threejs
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+//hooks
+import { useScreenSize } from '@/hooks';
 
 export default function WizardModel(props) {
   const { nodes, materials } = useGLTF('/models/wizard-transformed.glb');
+  const { isMediumScreen, isSmallScreen } = useScreenSize();
+
+  const renderScale = () => {
+    if (isSmallScreen) {
+      return [0.04, 0.04, 0.04];
+    }
+
+    if (isMediumScreen) {
+      return [0.05, 0.05, 0.05];
+    }
+
+    return [0.06, 0.06, 0.06];
+  }
+
+  const renderYPosition = () => {
+    if (isSmallScreen) {
+      return -0.75;
+    }
+
+    if (isMediumScreen) {
+      return -1;
+    }
+
+    return -1.5;
+  }
 
   const modelRef = useRef();
 
   useFrame((state) => {
-    modelRef.current.position.y = -1.5 + Math.sin(state.clock.elapsedTime) * 0.15;
+    modelRef.current.position.y = renderYPosition() + Math.sin(state.clock.elapsedTime) * 0.15;
   });
 
   return (
@@ -18,8 +46,8 @@ export default function WizardModel(props) {
       {...props} 
       ref={modelRef}
       dispose={null}
-      position={[0, -1.5, 0]}
-      scale={[0.06, 0.06, 0.06]}
+      position={[0, renderYPosition(), 0]}
+      scale={renderScale()}
       rotation={[0.25, 0, 0]}
     >
       <mesh

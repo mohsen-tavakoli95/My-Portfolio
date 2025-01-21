@@ -38,7 +38,7 @@ export default function Form() {
   };
 
   const onSubmit = data => {
-    const { name, email, message} = data;
+    const { name, email, message } = data;
     const templateParams = {
       to_name: "Mohsen Tavakoli",
       from_name: name,
