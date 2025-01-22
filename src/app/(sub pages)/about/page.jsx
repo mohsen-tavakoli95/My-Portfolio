@@ -9,7 +9,7 @@ import AboutDetails from "./AboutDetails";
 export default function About() {
   return (
     <>
-      <Image src={backgroundImage} alt="background-image" className="w-full h-full fixed top-0 left-0 object-cover object-center opacity-25 -z-50" />
+      <Image priority size="100vw" src={backgroundImage} alt="background-image" className="w-full h-full fixed top-0 left-0 object-cover object-center opacity-25 -z-50" />
 
       <div className="w-full h-3/5 xs:h-3/4 sm:h-screen absolute top-1/3 sm:top-1/2 -translate-y-1/2 left-0">
         <RenderModel>

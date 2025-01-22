@@ -14,7 +14,7 @@ const itemMotion = {
   show: { scale: 1 }
 }
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const renderIcon = (icon) => {
   switch (icon) {
