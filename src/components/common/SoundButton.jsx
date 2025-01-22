@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 //icons
 import { Volume2, VolumeX } from 'lucide-react';
@@ -37,6 +37,19 @@ const SoundButton = () => {
   const { isSmallScreen } = useScreenSize();
   const audioRef = useRef(null);
 
+  const handleFirstUserInteraction = useCallback(() => {
+    const musicPlaying = localStorage.getItem("musicPlaying");
+    
+    if (musicPlaying === "true" && !isPlaying) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+
+    ["click", "keydown", "touchstart"].forEach((event) =>
+      document.removeEventListener(event, handleFirstUserInteraction)
+    );
+  }, [isPlaying]);
+
   useEffect(() => {
     const musicPlaying = localStorage.getItem("musicPlaying");
 
@@ -46,9 +59,11 @@ const SoundButton = () => {
 
     if (musicPlaying && musicPlaying === "true" && audioRef && audioRef?.current) {
       setIsPlaying(true);
-      audioRef.current.play();
-    } 
-  }, [audioRef]);
+      ["click", "keydown", "touchstart"].forEach((event) =>
+        document.addEventListener(event, handleFirstUserInteraction)
+      );
+    }
+  }, [handleFirstUserInteraction]);
   
     useEffect(() => {
       let lastScrollY = window.scrollY;
@@ -87,9 +102,6 @@ const SoundButton = () => {
   }
 
   const renderMobileView = () => {
-    if (!showButton) {
-      return <></>;
-    }
 
     return (
       <div className='fixed top-4 right-2.5 xs:right-4 z-50 group'>
@@ -98,21 +110,23 @@ const SoundButton = () => {
           <source src='/audio/autumn.mp3' type='audio/mpeg' />
           Your broser does not support the audio element.
         </audio>
-        <motion.button 
-          className='text-foreground rounded-full flex items-center justify-center custom-bg w-fit self-start z-50' 
-          aria-label="Home"
-          name="home"
-          variants={itemMotion}
-          initial='hidden'
-          animate='show'
-          transition={{ delay: 1 }}
-          onClick={toggleSound}
-        >
-          {isPlaying ? 
-            <Volume2 className='w-10 xs:w-14 h-10 xs:h-14 p-2 xs:p-4' strokeWidth={1.5} /> :
-            <VolumeX className='w-10 xs:w-14 h-10 xs:h-14 p-2 xs:p-4' strokeWidth={1.5} />
-          }
-        </motion.button>
+        {showButton &&(
+          <motion.button 
+            className='text-foreground rounded-full flex items-center justify-center custom-bg w-fit self-start z-50' 
+            aria-label="Home"
+            name="home"
+            variants={itemMotion}
+            initial='hidden'
+            animate='show'
+            transition={{ delay: 1 }}
+            onClick={toggleSound}
+          >
+            {isPlaying ? 
+              <Volume2 className='w-10 xs:w-14 h-10 xs:h-14 p-2 xs:p-4' strokeWidth={1.5} /> :
+              <VolumeX className='w-10 xs:w-14 h-10 xs:h-14 p-2 xs:p-4' strokeWidth={1.5} />
+            }
+          </motion.button>
+        )}
       </div>
     );
   }
