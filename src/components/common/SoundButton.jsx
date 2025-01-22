@@ -102,7 +102,6 @@ const SoundButton = () => {
   }
 
   const renderMobileView = () => {
-
     return (
       <div className='fixed top-4 right-2.5 xs:right-4 z-50 group'>
         {renderModal()}
