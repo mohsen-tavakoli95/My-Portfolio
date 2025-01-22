@@ -4,6 +4,18 @@ import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { Toaster, toast } from 'sonner';
+//motion
+import { motion } from 'framer-motion';
+
+const motionContainer = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.3, delayChildren: 0.5 } }
+}
+
+const itemMotion = {
+  hidden: { scale: 0 },
+  show: { scale: 1 }
+}
 
 const formItemsClassName = "w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg";
 
@@ -60,12 +72,15 @@ export default function Form() {
 
   const renderForm = () => {
     return (
-      <form 
+      <motion.form 
         ref={ref}
         onSubmit={handleSubmit(onSubmit)}
         className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
+        variants={motionContainer}
+        initial='hidden'
+        animate='show'
       >
-        <input 
+        <motion.input 
           type="text" 
           autoComplete="off"
           placeholder="Name" 
@@ -83,13 +98,14 @@ export default function Form() {
             })
           } 
           className={formItemsClassName}
+          variants={itemMotion}
         />
         {
           errors.name && (
             <span className='inline-block self-start text-accent'>{errors.name.message}</span>
           )
         }
-        <input 
+        <motion.input 
           type="email" 
           placeholder="Email" 
           {
@@ -99,13 +115,14 @@ export default function Form() {
             })
           } 
           className={formItemsClassName}
+          variants={itemMotion}
         />
         {
           errors.email && (
             <span className='inline-block self-start text-accent'>{errors.email.message}</span>
           )
         }
-        <textarea 
+        <motion.textarea 
           placeholder="Message" 
           {
             ...register("message", {
@@ -121,6 +138,7 @@ export default function Form() {
             })
           } 
           className={formItemsClassName}
+          variants={itemMotion}
         />
         {
           errors.message && (
@@ -128,13 +146,14 @@ export default function Form() {
           )
         }
   
-        <input 
+        <motion.input 
           value="send your message"
           type="submit" 
           className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid text-foreground
             hover:shadow-glass-sm backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize'
+          variants={itemMotion}
         />
-      </form>
+      </motion.form>
     );
   }
   

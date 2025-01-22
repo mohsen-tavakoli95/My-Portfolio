@@ -6,6 +6,15 @@ import { Github, Home, Linkedin, NotebookText, Palette, Phone, Twitter, User } f
 import { WraperLayout } from '@/components';
 //clsx
 import clsx from 'clsx';
+//motion
+import { motion } from 'framer-motion';
+
+const itemMotion = {
+  hidden: { scale: 0 },
+  show: { scale: 1 }
+}
+
+const MotionLink = motion(Link);
 
 const renderIcon = (icon) => {
   switch (icon) {
@@ -60,11 +69,12 @@ const NavigationButton = (props) => {
   const renderSmallView = () => {
     return (
       <div className='w-fit cursor-pointer z-50'>
-        <Link 
+        <MotionLink 
           href={link} 
           target={newTab ? "_blank" : "_self"} 
           className='text-foreground rounded-full flex items-center justify-center custom-bg' 
           aria-label={label}
+          variants={itemMotion}
         >
           <span className='relative w-12 h-12 xs:w-14 xs:h-14 p-4 hover:text-accent'>
             {renderIcon(icon)}
@@ -81,7 +91,7 @@ const NavigationButton = (props) => {
               {label}
             </span>
           </span>
-        </Link>
+        </MotionLink>
       </div>
     );
   }
@@ -94,11 +104,12 @@ const NavigationButton = (props) => {
             transform: `translate(${x}, ${y})`
           }}
         >
-          <Link 
+          <MotionLink 
             href={link} 
             target={newTab ? "_blank" : "_self"} 
             className='text-foreground rounded-full flex items-center justify-center custom-bg' 
             aria-label={label}
+            variants={itemMotion}
           >
             <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
               {renderIcon(icon)}
@@ -111,7 +122,7 @@ const NavigationButton = (props) => {
                 {label}
               </span>
             </span>
-          </Link>
+          </MotionLink>
         </div>
       );
     }

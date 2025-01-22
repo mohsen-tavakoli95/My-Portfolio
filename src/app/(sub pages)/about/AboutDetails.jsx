@@ -1,14 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import clsx from 'clsx';
-
-const ItemLayout = ({ children, className }) => {
-  return (
-    <div className={clsx(`custom-bg p-4 sm:p-8 rounded-xl flex items-center justify-center space-y-8`, className)}>
-      {children}
-    </div>
-  );
-}
+//compoentns
+import ItemLayout from './ItemLayout';
 
 const AboutDetails = () => {
   return (
