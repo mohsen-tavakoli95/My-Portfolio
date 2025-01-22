@@ -87,9 +87,12 @@ const SoundButton = () => {
   }
 
   const renderMobileView = () => {
+    if (!showButton) {
+      return <></>;
+    }
+
     return (
-      // <div className={`fixed top-4 right-2.5 xs:right-4 z-50 group transition-transform duration-500 ease-in-out ${showButton ? 'translate-y-0 opacity-100' : '-translate-y-24 opacity-0'}`}>
-      <div className={`fixed top-4 right-2.5 xs:right-4 z-50 group ${showButton ? 'translate-y-0 opacity-100' : '-translate-y-24 opacity-0'}`}>
+      <div className='fixed top-4 right-2.5 xs:right-4 z-50 group'>
         {renderModal()}
         <audio ref={audioRef} loop>
           <source src='/audio/autumn.mp3' type='audio/mpeg' />

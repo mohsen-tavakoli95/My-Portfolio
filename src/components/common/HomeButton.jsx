@@ -48,11 +48,15 @@ const HomeButton = () => {
   }
 
   const renderMobileView = () => {
+    if (!showButton) {
+      return <></>;
+    }
+
     return (
       <MotionLink 
         href={"/"} 
         target='_self'
-        className={`text-foreground rounded-full flex items-center justify-center custom-bg fixed left-4 top-4 w-fit self-start z-50 transition-transform duration-500 ease-in-out ${showButton ? 'translate-y-0 opacity-100' : '-translate-y-24 opacity-0'}`}
+        className='text-foreground rounded-full flex items-center justify-center custom-bg fixed left-4 top-4 w-fit self-start z-50'
         aria-label="Home"
         name="home"
         variants={itemMotion}
