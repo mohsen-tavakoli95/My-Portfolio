@@ -3,7 +3,7 @@ import Image from "next/image";
 import backgroundImage from "../../public/background/home-background.png";
 //components
 import { Navigation, RenderModel } from "@/components";
-import { WizardModel } from "@/components/models";
+import { WizardModel, ComputerModel } from "@/components/models";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <div className="w-full h-screen">
         <Navigation />
         <RenderModel>
-          <WizardModel />
+          <ComputerModel />
         </RenderModel>
       </div>
     </main>
