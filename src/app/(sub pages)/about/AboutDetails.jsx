@@ -5,7 +5,7 @@ import ItemLayout from './ItemLayout';
 
 const AboutDetails = () => {
   return (
-    <div className='py-0 w-full'>
+    <div className='py-0 mt-20 w-full'>
       <div className='grid grid-cols-12 gap-4 md:gap-8 w-full'>
         <ItemLayout className="col-span-full lg:col-span-8 row-span-2 flex-col items-start">
           <h2 className='text-xl md:text-2xl text-left w-full capitalize'>About me</h2>

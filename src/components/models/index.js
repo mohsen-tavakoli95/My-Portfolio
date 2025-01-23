@@ -1,11 +1,5 @@
-import WizardModel from "./Wizard";
-import StaffModel from "./Staff";
-import HatModel from "./Hat";
-import ComputerModel from "./Computer";
+import MonitorModel from "./Monitor";
 
 export {
-  WizardModel,
-  StaffModel,
-  HatModel,
-  ComputerModel,
+  MonitorModel,
 }

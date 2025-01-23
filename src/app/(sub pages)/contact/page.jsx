@@ -1,13 +1,11 @@
-//images
-import Image from "next/image";
-import backgroundImage from "../../../../public/background/contact-background.png";
 //components
 import Form from "./Form";
+import { RenderBackgroudImage } from "@/components";
 
 export default function About() {
   return (
     <>
-      <Image priority size="100vw" src={backgroundImage} alt="background-image" className="w-full h-full fixed top-0 left-0 object-cover object-center opacity-25 -z-50" />
+      <RenderBackgroudImage />
 
       <article className="relative w-full flex flex-col items-center justify-center py-8 sm:py-0 space-y-8">
         <div className="flex flex-col items-center justify-center space-y-6 w-full sm:w-3/4">
