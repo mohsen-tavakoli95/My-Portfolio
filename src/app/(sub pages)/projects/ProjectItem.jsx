@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 //motion
 import { motion } from 'framer-motion';
 //components
@@ -14,7 +13,7 @@ import {
 
 const motionContainer = {
   hidden: { opacity: 0, y: 100 },
-  show: { opacity: 1, y: 0 }
+  show: { opacity: 1, y: 0, transition: { duration: 1 } }
 }
 
 const ProjectItem = (props) => {
@@ -33,17 +32,12 @@ const ProjectItem = (props) => {
             <p className='text-foreground mr-1 xs:mr-2 font-light xs:font-bold text-[12px] xs:text-sm'>{date}</p>
           </AccordionTrigger>
           <AccordionContent>
-            <p className={`text-foreground text-[12px] xs:text-sm pb-6 whitespace-break-spaces ${demoLink ? 'pb-4' : ''}`}>{description}</p>
-            {demoLink && <Link href={demoLink} target='_blank' className='text-accent text-[12px] xs:text-sm !mt-6'>View Live Demo</Link>}
+            <p className='text-foreground text-[12px] xs:text-sm pb-6 whitespace-break-spaces'>{description}</p>
+            {/* <p className={`text-foreground text-[12px] xs:text-sm pb-6 whitespace-break-spaces ${demoLink ? 'pb-4' : ''}`}>{description}</p>
+            {demoLink && <Link href={demoLink} target='_blank' className='text-accent text-[12px] xs:text-sm !mt-6'>View Live Demo</Link>} */}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      {/* <div className='flex items-center justify-center space-x-2'>
-        <h2 className='text-foreground'>{name}</h2>
-        <p className='text-muted'>{description}</p>
-      </div>
-      <div className='self-end flex-1 mx-2 mb-1 bg-transparent border-b border-dashed border-muted' />
-      <p className='text-foreground'>{new Date(date).toDateString()}</p> */}
     </motion.div>
   );
 }

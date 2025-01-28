@@ -12,7 +12,7 @@ const ItemLayout = ({ children, className }) => {
       className={clsx(`custom-bg p-4 sm:p-8 rounded-xl flex items-center justify-center space-y-8`, className)}
       initial={{ scale: 0 }}
       whileInView={{ scale: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
       {children}

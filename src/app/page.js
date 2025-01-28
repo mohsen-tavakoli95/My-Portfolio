@@ -9,9 +9,9 @@ export default function Home() {
       <RenderBackgroudImage />
       <div className="w-full h-screen">
         <Navigation />
-        <RenderModel>
+        {/* <RenderModel>
           <MonitorModel />
-        </RenderModel>
+        </RenderModel> */}
       </div>
     </main>
   );

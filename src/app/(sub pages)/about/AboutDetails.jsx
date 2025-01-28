@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
+import Link from 'next/link';
 //compoentns
 import ItemLayout from './ItemLayout';
 
@@ -12,10 +13,12 @@ const AboutDetails = () => {
           <p className="font-light text-foreground text-xs sm:text-sm md:text-base whitespace-break-spaces text-left">{`As a Senior Frontend Developer with over 6 years of experience, I specialize in designing and implementing scalable, user-centric web applications using React.js, JavaScript, and modern development tools. My expertise spans diverse industries, including financial services, government platforms, dashboards, and integration systems.\nI am passionate about crafting seamless user experiences and building robust, maintainable architectures. Dedicated to delivering high-quality code, I thrive in collaborative environments and enjoy mentoring teams to achieve project goals. With a proven track record of driving innovation and ensuring project success, I am always eager to contribute to impactful and forward-thinking solutions.`}
           </p>
         </ItemLayout>
-        <ItemLayout className="col-span-full lg:col-span-4 text-accent">
+        <ItemLayout className="col-span-full lg:col-span-4 text-accent cursor-pointer">
+        <Link href="/projects" target='_blank' className='text-left w-full'>
           <p className='font-semibold w-full text-left text-2xl sm:text-5xl'>
             +8 <sub className='font-semibold text-base'>projects</sub>
           </p>
+        </Link>
         </ItemLayout>
         <ItemLayout className="col-span-full lg:col-span-4 text-accent">
           <p className='font-semibold w-full text-left text-2xl sm:text-5xl'>

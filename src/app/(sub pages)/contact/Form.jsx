@@ -14,7 +14,7 @@ const motionContainer = {
 
 const itemMotion = {
   hidden: { scale: 0 },
-  show: { scale: 1 }
+  show: { scale: 1, transition: { duration: 1 } }
 }
 
 const formItemsClassName = "w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg";
@@ -149,7 +149,7 @@ export default function Form() {
         <motion.input 
           value="send your message"
           type="submit" 
-          className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid text-foreground
+          className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid text-accent
             hover:shadow-glass-sm backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize'
           variants={itemMotion}
         />

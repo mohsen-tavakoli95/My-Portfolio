@@ -27,7 +27,7 @@ const Navigation = () => {
         <WraperLayout>
           {({ isSmallScreen }) => {
             if (isSmallScreen)
-              return renderSmallView();
+              return renderMobileView();
 
             return renderDefaultView();
           }}
@@ -36,15 +36,15 @@ const Navigation = () => {
     );
   }
 
-  const renderSmallView = () => {
+  const renderMobileView = () => {
     return (
       <>
-        <motion.div variants={motionContainer} initial="hidden" animate="show" className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-start justify-center relative group'>
+        <motion.div variants={motionContainer} initial="hidden" animate="show" className='w-full pl-6 xs:p-0 xs:w-max flex flex-col space-y-4 items-start justify-center relative group'>
           {
             BtnList.slice(0, BtnList.length / 2).map((btn, index) => <NavigationButton key={btn.label + index} {...btn} />)
           }
         </motion.div>
-        <motion.div variants={motionContainer} initial="hidden" animate="show" className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-end justify-center relative group'>
+        <motion.div variants={motionContainer} initial="hidden" animate="show" className='w-full pr-6 xs:p-0 xs:w-max flex flex-col space-y-4 items-end justify-center relative group'>
           {
             BtnList.slice(BtnList.length / 2, BtnList.length).map((btn, index) => <NavigationButton key={btn.label + index} isLeftDirection {...btn} />)
           }
